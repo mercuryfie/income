@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.1.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        $(function () {
+            $('.subtab').css('display','none');
+            $('.tabbox').css('display','none');
+            $('.maintab>li').mouseover(function () {
+                $(this).find('.subtab').stop().fadeIn(1000)   
+                // $('header').css('height','400px') 
+            })
+            $('.maintab>li').mouseout(function () {
+                $(this).find('.subtab').stop().fadeOut(1000) 
+                 
+            })
+
+            setInterval(function () {
+                $('.sliderul').animate({'margin-left':'-100vw'},1000)
+                $('.sliderul').animate({'margin-left':'-200vw'},2000)
+                $('.sliderul').animate({'margin-left':'0vw'},2000)
+            },3000)
+
+            $('.mainul>li').click(function () { 
+                $(this).addClass('active').siblings().removeClass('active');
+            })
+
+            $('.popbox').css('display','none');
+            $('.mainul>li:first-child').click(function () {
+                $('.popbox').show();
+            })
+            $('.whitebox>button').click(function () {
+                $('.popbox').hide();
+            })
+ 
+            $('.textbox').css('display','none')
+            $('.s-slide1>a').mouseover(function () {
+                $(this).parents().find('.textbox1').stop().fadeIn();
+            })
+            $('.s-slide1>a').mouseout(function () {
+                $(this).parents().find('.textbox1').stop().fadeOut()
+            })
+
+            $('.s-slide2>a').mouseover(function () {
+                $(this).parents().find('.textbox2').stop().fadeIn();
+            })
+            $('.s-slide2>a').mouseout(function () {
+                $(this).parents().find('.textbox2').stop().fadeOut()
+            })
+             
+        })
+    </script>
+    <style>
+        .none {
+            display: none;
+        }
+        * {margin: 0;padding: 0;}
+        ul {list-style-type: none;}
+        a {color:inherit;
+        text-decoration: none;}
+
+        header, footer, body {
+            width:100vw;
+            color:#999;
+            font-family: "Noto Sans KR", serif; 
+            font-weight: normal;  
+             }
+        header { 
+            height: 100px;
+            background-color: #fff;
+            position: relative; 
+        }
+
+        #wrap {
+
+            margin: 0 auto;
+            height: 600px;
+        }
+        .headerbox {
+            width:1200px;
+            height: 100px;
+            margin: 0 auto; 
+
+            display: flex;
+            justify-content: space-between;
+             
+        } 
+
+        /* tab menu */
+        .maintab {
+            display: flex;
+            margin-top: 50px; 
+             position: relative;
+             z-index: 5;
+        }
+        .maintab>li {
+            width:150px;
+            height: 30px;
+            background-color: white;
+        }
+        .maintab>li>a {
+            
+            display: block;
+            line-height: 30px;
+            text-align: center; 
+            border-radius: 10px;
+        }
+        .maintab>li>a:hover {
+            background-color: #0464fb;
+            color:white;
+             
+        } 
+        .subtab>li {
+            width:150px;
+            height: 40px; 
+            padding: 10px 0;
+            font-size: 14px;
+            background-color: white;
+             
+        }
+        .subtab>li:last-child {
+            border-radius: 0 0 10px 10px;
+        }
+        .subtab>li>a {
+            display: block;
+            line-height: 40px;
+            text-align: center; 
+        }
+        .subtab>li>a:hover {
+            background-color: #ebebeba6;
+            color:#0464fb;
+            border-radius: 10px;
+        }
+        /* slider */
+
+        .slider  {
+            margin: 0 auto;
+            width: 100vw;
+            height: 200px;
+             
+            z-index: 1;
+            margin-bottom: 50px;
+        }
+         
+        .sliderul { 
+            width: 300vw;
+             
+            display: flex;
+        }
+        .sliderul>li { 
+            width: 100vw; 
+            position: relative;
+        }
+        .sliderul img {
+            width: 100vw;
+            height: 180px;
+            object-fit: cover;
+        }
+        .sliderul span {
+            position: absolute;
+            top:30%;
+            left:30%;
+            width: 600px;
+            height:50px; 
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            line-height: 50px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+ 
+
+         
+
+        /*notice*/
+
+        .con2 {
+            width:1200px;
+            margin: 0 auto;
+            
+        }
+
+        .mainul {
+            width: 400px; 
+            display: flex;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+        .mainul>li {
+            width: 150px;
+            height: 40px;
+            background-color: #0464fb;
+            color:white;
+        }
+        .mainul>li>a {
+            display: block;
+            line-height: 40px;
+            text-align: center;
+
+        }
+
+        .mainul>li>a:hover {
+            font-weight: bold;
+        }
+
+        .mainul>li div {
+            width:400px;
+            height:240px; 
+            position: absolute;
+            top:40px;
+            left:0; 
+        } 
+
+        .mainul>li.active>a {
+             
+            background-color: white;
+            color:#0464fb;
+        }
+        .mainul>li.active div {
+             
+            z-index: 2;
+            display: block;
+        }
+
+        .notiul {
+            width:400px;
+            height:240px; 
+            background-color: white; 
+        }
+        .notiul>li {
+            width:400px;
+            height:40px;
+            padding:10px 0;
+            background-color: white;
+            color:#333333;
+        }
+         
+        .notiul>li>a {
+            display: block;
+            line-height: 40px; 
+            padding-left: 20px;
+             
+
+        }
+        .notiul>li>a:hover {
+            background-color: #e6e6e6;
+            border-radius: 10px;
+            color:#0464fb;
+        }
+
+
+        .galul {
+            display: flex;
+            justify-content: space-evenly;
+            width:400px;
+            height: 240px; 
+            background-color: white;
+        }
+        .galul img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin:10px;
+            opacity:0.5;
+            border-radius: 10px;
+        }
+        .galul img:hover {
+            opacity: 1;
+        }
+
+        /* popbox */
+
+        .popbox {
+            position: relative;
+        }
+        .bkbox {
+            width:100vw;
+            height: 100vh;
+            position: fixed;
+            top:0;
+            left:0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9;
+
+        }
+        .whitebox {
+            width:300px;
+            height: 300px;
+            position: fixed;
+            top:50%;
+            left:50%;
+            margin-top: -150px;
+            margin-left: -150px;
+            padding: 30px;
+            z-index: 10;
+            background-color: white;
+        }
+        .whitebox button {
+            margin:100px 0;
+            width:200px;
+            height: 30px;
+            border: 1px solid #ccc;
+        }
+ 
+        
+
+        /* con3,4 */
+
+        #contents {
+            display: flex;
+            justify-content: space-evenly;
+            width: 1200px;
+            height: 400px;
+            margin: 0 auto;
+             
+        } 
+
+        /* swiper */
+         
+        swiper-container {
+        width: 400px;
+        height: 240px; 
+        position: relative;
+        margin: 0 20px;
+        display: flex;
+        }
+         
+
+        swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+         
+        }
+
+        .s-slide {
+            position: relative;
+        }
+        .s-slide>a {
+            display: block;
+        }
+         
+        .textbox {
+             
+            width: 400px;
+            height: 120px;
+            position: absolute;
+            top:120px;
+            left:0;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 20px;
+
+        }
+         
+        .s-slide p  {
+            position: absolute;
+            top:40px;
+            left:20px; 
+            color:white;
+            font-size: 12px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+        }
+
+        .s-slide span  {
+            position: absolute;
+            top:60px;
+            left:20px;
+            color:white; 
+            font-size: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+         
+
+        swiper-slide img {
+        display: block;
+        width: 400px;
+        height: 240px; 
+        border-radius: 20px;
+        object-fit: cover;
+         
+        } 
+        /* footer */
+
+        footer {
+             
+            height: 500px;
+            background-color: #ebebeba6;
+        }
+        .fbox {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .ftext p:nth-child(1) {
+            font-size: 14px;
+            color:#333;
+            font-family: 'open-sans';
+            font-weight: bold;
+             padding-top: 50px;
+        }
+        .ftextp2  {
+            font-size: 12px;
+            color:#666;
+             
+        }
+
+        .footerul {
+            display: flex;
+             
+        }
+        .footerul>li>ul>li {
+            width:180px;
+        }
+        .footerul a {
+            font-size: 12px;
+            color:#666;
+        }
+        .footerul a:hover {
+            color:#333;
+            text-decoration: underline;
+        }
+        .snsbox img {
+            opacity: 50%;
+        }
+        .snsbox img:hover {
+            opacity: 1;
+        }
+
+        /* 배경색 변경 */
+        @media screen and (max-width: 600px) {
+        body {
+            width: 600px;
+            height: 100%;
+            background-color: #f0f0f0; /* 배경색 변경 */
+            font-size: 14px; /* 폰트 크기 조정 */
+        }
+        
+
+
+        header {
+            height: 100px; /* 헤더 높이 조정 */
+            background-color: #333; /* 헤더 배경색 */
+            color: white; /* 텍스트 색상 */
+            text-align: center; /* 중앙 정렬 */
+            line-height: 60px; /* 세로 중앙 정렬 */
+        }
+
+        .logo {
+            position: fixed;
+            top:0;
+            left:0;
+        }
+        .logo i {
+            position: fixed;
+            top:0;
+            left:0;
+            background-color: black;
+        }
+        .mainul {
+            position: fixed;
+            top:0;
+            right:0;
+            display: flex; /* 플렉스 박스 사용 */
+            flex-direction: column; /* 세로 방향으로 나열 */
+            align-items: center; /* 중앙 정렬 */
+        }
+        .sliderul {
+            width: 600px;
+            height: 200px;
+        }
+        .sliderul span {
+            font-size: 22px;
+            font-weight: normal;
+
+        }
+
+        .sliderul img {
+            width: 600px;
+            height: 200px;
+        }
+
+        #contents {
+            width: 100%;
+            height: 900px;
+            display: flex;
+            flex-direction: column;
+
+            margin: 30px 0; /* 패딩 추가 */
+            background-color: white; /* 콘텐츠 배경색 */
+            border-radius: 5px; /* 모서리 둥글게 */
+        }
+
+        .footerul {
+            display: none;
+        }
+
+        footer {
+            height: 40px; /* 푸터 높이 조정 */
+            background-color: #333; /* 푸터 배경색 */
+            color: white; /* 텍스트 색상 */
+            text-align: center; /* 중앙 정렬 */
+            line-height: 40px; /* 세로 중앙 정렬 */
+        }
+    }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="headerbox"> 
+        <div class="logo">
+            <img src="./img/toss-logo.png" alt="img">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul class="maintab">
+                <li><a href="#">홈</a>
+                    <ul class="subtab">
+                        <li><a href="#">Toss Income이란?</a></li>
+                        <li><a href="#">최신 세무 뉴스</a></li> 
+                        <li><a href="#">공지사항</a></li>  
+                    </ul>
+                </li>
+                <li><a href="#">세금 계산기</a>
+                    <ul class="subtab">
+                        <li><a href="#">소득세 계산기</a></li>
+                        <li><a href="#">부가가치세 계산기</a></li>
+                        <li><a href="#">양도소득세 계산기</a></li> 
+                    </ul>
+                </li>
+                <li><a href="#">세금 신고</a>
+                    <ul class="subtab">
+                        <li><a href="#">경정 청구</a></li>
+                        <li><a href="#">종합 소득세</a></li>
+                        <li><a href="#">부가 가치세</a></li>
+                        <li><a href="#">연말정산</a></li> 
+                    </ul>
+                </li>
+                <li><a href="#">자료실</a>
+                    <ul class="subtab">
+                        <li><a href="#">세금 관련 법령 정보</a></li>
+                        <li><a href="#">세무 서식 다운로드</a></li>
+                        <li><a href="#">세무 용어 사전</a></li>
+                         
+                    </ul>
+                </li> 
+                <li><a href="#">세무 팁</a>
+                    <ul class="subtab">
+                        <li><a href="#">절세 전략</a></li>
+                        <li><a href="#">업종별 세무 가이드</a></li>
+                        <li><a href="#">세금 혜택 안내</a></li>
+                        <li><a href="#">전문가 칼럼</a></li>
+                         
+                    
+                    </ul>
+                </li>
+                <li><a href="#">마이페이지</a>
+                    <ul class="subtab">
+                        <li><a href="#">개인정보 관리</a></li>
+                        <li><a href="#">세무 관리 현황</a></li>
+                        <li><a href="#">세무 관련 문서</a></li>
+                        <li><a href="#">1:1 세무 Q&A</a></li>
+                        <li><a href="#">세무 관련 문서</a></li> 
+                    </ul>
+                </li> 
+            </ul>
+        </nav>
+        <div class="tabbox"></div>
+        </div>
+    </header>
+    <main>
+        <div id="wrap">
+            <div class="slider con1">
+                <ul class="sliderul">
+                    <li><a href="#">
+                        <img src="./img/slider-1.jpg" alt="">
+                         
+                            </a>
+                            <span>3초 만에 숨은 환급액 찾기</span> 
+                         
+                    </li>
+                    <li><a href="#">
+                        <img src="./img/slider-2.png" alt="img">
+                        </a>
+                        <span>3초 만에 경정 청구하기 </span> 
+                    </li>
+                    <li><a href="#">
+                        <img src="./img/slider-3.jpg" alt="img">
+                         </a>
+                        <span>빠르고 간편한 연말 정산 </span>
+                    </li>
+                </ul>
+
+                <!-- <swiper-container class="mySwiper" navigation="true">
+                    <swiper-slide class="s-slide">
+                         <a href="#"><img src="./img/slider (2).jpg" alt="img"></a>
+                            <span>3초 만에 숨은 환급액 찾기</span> 
+                    </swiper-slide>
+                    <swiper-slide class="s-slide">
+                        <a href="#"><img src="./img/slider (1).jpg" alt="img"></a>
+                            <span>3초 만에 경정 청구하기 </span> 
+                    </swiper-slide>
+                    <swiper-slide class="s-slide">
+                        <a href="#"><img src="./img/slider (3).png" alt="img"></a>
+                        <span>빠르고 간편한 연말 정산 </span></swiper-slide> 
+                  </swiper-container>  -->
+                 
+                  
+            </div>
+            <div id="contents"> 
+                <div class="con2">
+                    <ul class="mainul">
+                        <li class="active"><a href="#">공지사항</a>
+                            <div>
+                                <ul class="notiul">
+                                    <li><a href="#">3초 만에 환금급 조회하기</a></li>
+                                    <li><a href="#">종합소득세 신고 및 납부 기간 안내</a></li>
+                                    <li><a href="#">종합소득세 신고대상 여부 확인</a></li>
+                                    <li><a href="#">개정세법해설 및 조세 관련</a></li> 
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">세무 꿀팁</a>
+                            <div>
+                                <ul class="galul">
+                                    <li><a href="#"><img src="./img/pig.jpg" alt="img"></a></li>
+                                    <li><a href="#"><img src="./img/pig.jpg" alt="img"></a></li>
+                                    <li><a href="#"><img src="./img/pig.jpg" alt="img"></a></li> 
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="popbox">
+                        <div class="bkbox"></div>
+                        <div class="whitebox">
+                            <h3>3초 만에 환급금 조회하기</h3>
+                            <br><hr><br>
+                            <p>🎉 환급금을 신청하신 경우 평균 256.435만원을 환급받았습니다! 
+                            </p>
+                            <button>나의 환급금 알아보기</button>
+                        </div>
+                    </div>
+                </div>
+                 
+
+                 
+                    <div class="con con3"> 
+                        <swiper-container class="mySwiper" navigation="true">
+                            <swiper-slide class="s-slide s-slide1">
+                                 
+                                <a href="#"><img src="./img/img-bankfeed-credit-cover.jpg" alt="img"></a>
+                                <div class="textbox textbox1"> 
+                                    <p>투자 | 토스인컴</p>
+                                    <span>감가상각으로 세금 부담 덜 수 있다고요?</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="s-slide s-slide1">
+                                <a href="#"><img src="./img/MZ_insta.jpg" alt="img"></a>
+                                <div class="textbox textbox1"> 
+                                <p>소비 | 토스인컴</p>
+                                <span>MZ세대 소비 트렌드 저축이 대세래요 (feat. 적금 추천)</span>
+                                </div>
+                            </swiper-slide>
+                            <swiper-slide class="s-slide s-slide1">
+                                 
+                                <a href="#"><img src="./img/img-bankfeed-mo-couple-house.png" alt="img"></a>
+                                <div class="textbox textbox1"> 
+                                <p>일상 | 토스인컴</p>
+                                <span>청년월세지원 잊지 말고 신청하세요 <br>(feat.청년월세 한시 특별지원)</span>
+                                </div>
+                            </swiper-slide> 
+                        </swiper-container> 
+                    </div>
+                 
+                
+                <div class="con con4">
+                    <swiper-container class="mySwiper" navigation="true">
+                        <swiper-slide class="s-slide s-slide2">
+                            <a href="#"><img src="./img/img-bankfeed-financial-fraud-exchange.png" alt="img"></a>
+                            <div class="textbox textbox2"> 
+                            <p>일상 | 토스인컴</p>
+                            <span>2025년 예산안 미리 살펴보아요 (feat.육아휴직급여)</span>
+                            </div> 
+                        </swiper-slide>
+                        <swiper-slide class="s-slide s-slide2">
+                            <a href="#"><img src="./img/img-bankfeed-re-cover22.jpg" alt="img"></a>
+                            <div class="textbox textbox2"> 
+                            <p>글로벌 | 토스인컴</p>
+                            <span>미국증시 폭락 원인을 알아보아요 <br>(feat. 미국 경기침체, 엔화 환율)</span>
+                            </div> 
+                        </swiper-slide>
+                        <swiper-slide class="s-slide s-slide2">
+                            <a href="#"><img src="./img/img-bankfeed-re-cover30.jpg" alt="img"></a>
+                            <div class="textbox textbox2"> 
+                                <p>투자 | 토스인컴</p>
+                                <span>2024 세법개정안 한 번에 살펴보아요 <br>(feat. 상속세, 종부세, 금투세 폐지)</span>
+                            </div> 
+                        </swiper-slide> 
+                    </swiper-container> 
+                </div>
+
+                 
+
+
+            </div>
+        </div>
+    </main>
+     
+    <footer>
+        <div class="fbox">
+             
+            <div class="ftext">
+                <p class="ftextp1">㈜비바리퍼블리카<br>
+                    Copyright ⓒ Toss. All Rights Reserved</p><br>
+                <p class="ftextp2">
+                    사업자 등록번호 : 120-88-01280 | 대표 : 이승건<br>
+                    호스팅 서비스 : 주식회사 비바리퍼블리카 | 통신판매업 신고번호 : 2014-서울강남-03377 사업자정보확인<br>
+                    06236 서울특별시 강남구 테헤란로 142, 4층, 10층, 11층, 12층, 13층, 22층, 23층 (역삼동, 아크플레이스)<br>
+                    고객센터 : 서울특별시 강남구 테헤란로 133, 9층 (역삼동, 한국타이어빌딩)<br>
+                </p><br>
+                <ul class="footerul">
+                    <li>
+                        <ul>
+                            <li><a href="#">서비스 이용약관</a></li>
+                            <li><a href="#">개인정보 처리방침</a></li>
+                            <li><a href="#">위치기반서비스 이용약관</a></li>
+                            <li><a href="#">금융소비자보호</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><a href="#">통합 금융정보 서비스 약관</a></li>
+                            <li><a href="#">채용팀 개인정보 처리방침</a></li>
+                            <li><a href="#">가맹점 고지사항</a></li>
+                            <li><a href="#">토스비즈니스 개인정보 처리방침</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><a href="#">마이데이터 서비스 이용약관</a></li>
+                            <li><a href="#">어드민 서비스 개인정보 처리방침</a></li>
+                            <li><a href="#">토스 전자서명인증업무준칙</a></li> 
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><a href="#">이용자의 권리 및 유의사항</a></li>
+                            <li><a href="#">영상정보처리기기 운영 관리 방침</a></li>
+                            <li><a href="#">토스 전자인증서비스 약관</a></li> 
+                        </ul>
+                    </li>
+                </ul>
+            </div><br>
+            <div class="snsbox">
+                <img src="https://static.toss.im/assets/homepage/safety/icn-facebook.svg" alt="img">
+                <img src="https://static.toss.im/assets/homepage/safety/icn-blog.svg" alt="img">
+                <img src="https://static.toss.im/assets/homepage/safety/icn-naver.svg" alt="img">
+                <img src="https://static.toss.im/assets/homepage/safety/icn-twitter.svg" alt="img">
+                <img src="https://static.toss.im/assets/homepage/safety/icn-instagram.svg" alt="img">
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+</body>
+</html>
